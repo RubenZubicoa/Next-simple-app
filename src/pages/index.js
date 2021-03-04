@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import Layout from '../components/layout';
-import { skills } from '../profile';
+import { skills, experience, projects } from '../profile';
 
 const index = () => (
     <Layout>
@@ -13,7 +14,7 @@ const index = () => (
                             <img className="img-fluid" src="profile.jpg" alt="" />
                         </div>
                         <div className="col-md-8">
-                            <h1>Rayn Ray</h1>
+                            <h1>Ryan Ray</h1>
                             <h3>Full stack developer</h3>
                             <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it?
@@ -51,11 +52,59 @@ const index = () => (
                 <div className="card bg-light">
                     <div className="card-body">
                         <h1>Experience</h1>
+                        <ul>
+                            {
+                                experience.map(({ title, description, from, to }, i) => (
+                                    <li key={i}>
+                                        <h3>{title}</h3>
+                                        <h5>{from}:{to ? to : ' Actualmente'}</h5>
+                                        <p>{description}</p>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                        <Link href="/experience">
+                            <a className="btn btn-light">
+                                Know more
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </div>
         </div>
 
+        {/** Portfolio */}
+        <div className="row">
+            <div className="col-md-12">
+                <div className="card card-body bg-dark">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1 className="text-center text-light">Portfolio</h1>
+                        </div>
+                        {
+                            projects.map((project, i) => (
+                                <div className="col-md-6 p-2" key={i}>
+                                    <div className="card h-100">
+                                        <div className="overflow">
+                                            <img src={`${project.image}`} className="card-img-top" />
+                                        </div>
+                                        <div className="card-body">
+                                            <h3>{project.name}</h3>
+                                            <p>{project.description}</p>
+                                            <Link href="/experience">
+                                                <a >
+                                                    Know more
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </Layout>
 )
 

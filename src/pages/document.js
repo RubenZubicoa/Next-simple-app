@@ -12,6 +12,7 @@ class MyDocument extends Document {
                 <Head>
                     <title>My portfolio</title>
                     <meta name="description" content="Ryan ray portfolio website"/>
+                    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.css"/>
                 </Head>
                 <body>
                     <Main />
