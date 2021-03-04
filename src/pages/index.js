@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+import { skills } from '../profile';
 
 const index = () => (
     <Layout>
@@ -25,6 +26,35 @@ const index = () => (
                 </div>
             </div>
         </header>
+
+        {/** Second section */}
+        <div className="row py-2">
+            <div className="col-md-4">
+                <div className="card bg-light">
+                    <div className="card-body">
+                        <h1>Skills</h1>
+
+                        {
+                            skills.map(({ skill, percentage }, i) => (
+                                <div className="py-3" key={i}>
+                                    <h5>{skill}</h5>
+                                    <div className="progress">
+                                        <div className="progress-bar" role="progressbar" style={{ width: `${percentage}%` }}></div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className="col-md-8">
+                <div className="card bg-light">
+                    <div className="card-body">
+                        <h1>Experience</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </Layout>
 )
